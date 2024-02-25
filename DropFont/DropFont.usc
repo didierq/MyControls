@@ -1,0 +1,39 @@
+
+
+subctrl DropFontBase {
+	GetMinSize() { sz = XMinSize(); sz.cy += 2; return sz; }
+	GetStdSize() { sz = GetMinSize(); sz.cx *= 7; return sz; }
+
+	Frame  SetFrame = InsetFrame();
+	bool   Dropping = true;
+	raw    SetDropLines = 16;
+	Text   Tip;
+
+	PaintDropLineDashBase(w) {
+		r = GetRect();
+		DrawCtrlFrame(w, r, .SetFrame);
+		sz = Size(r.right - r.left, r.bottom - r.top);
+		w.DrawRect(r.left, r.top, sz.cx, sz.cy, :SLtGray);
+		n = r.bottom - r.top;
+		DrawEdgeButton(w, RectC(r.right - n, r.top, n, n));
+		w.DrawImage((n - 7) / 2 + r.right - n, (n - 6) / 2 + r.top, "ClassicCtrlsImg::DA");
+	}
+}
+
+ctrl DropFont {
+	group "Push";
+	> DropLineDashBase;
+
+	Paint(w) {
+		PaintDropLineDashBase(w);
+		r = GetRect();
+		r.right = r.right - (r.bottom- r.top);
+		
+		txt = "FONT";
+		font=StdFont();
+		center = Point( (r.left+r.right)/2,  (r.top+r.bottom)/2);
+		textsize = GetTextSize( txt , font);
+		orig = Point( center.x - (textsize.cx/2), center.y -(textsize.cy/2) );
+		w.DrawSmartText( orig.x, orig.y, txt, font, :Black, 1);
+	}
+}

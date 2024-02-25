@@ -1,0 +1,10 @@
+description "\377255,127,200";
+
+uses
+	CtrlLib;
+
+file
+	DropFont.usc,
+	DropFont.cpp,
+	DropFont.h;
+

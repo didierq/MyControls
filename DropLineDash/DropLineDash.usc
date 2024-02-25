@@ -1,0 +1,53 @@
+
+
+
+subctrl DropLineDashBase {
+	GetMinSize() { sz = XMinSize(); sz.cy += 2; return sz; }
+	GetStdSize() { sz = GetMinSize(); sz.cx *= 7; return sz; }
+
+	Frame  SetFrame = InsetFrame();
+//	bool   Dropping = true;
+	raw    SetDropLines = 16;
+//	Text   Tip;
+
+	PaintDropLineDashBase(w) {
+		r = GetRect();
+		DrawCtrlFrame(w, r, .SetFrame);
+		sz = Size(r.right - r.left, r.bottom - r.top);
+		w.DrawRect(r.left, r.top, sz.cx, sz.cy, :SLtGray);
+		n = r.bottom - r.top;
+		DrawDropButton(w, RectC(r.right - n, r.top, n, n));
+	}
+}
+
+ctrl DropLineWidth {
+	group "Push";
+	> DropLineDashBase;
+
+	Paint(w) {
+		PaintDropLineDashBase(w);
+		r = GetRect();
+		width=4;
+		length = (r.right-2-(r.bottom - r.top)) -(r.left+6);
+		w.DrawLine(r.left+6, (r.top+r.bottom)/2, r.left+6+length, (r.top+r.bottom)/2, 4, :Black);
+	}
+}
+
+ctrl DropDashStyle {
+	group "Push";
+	> DropLineDashBase;
+
+	Paint(w) {
+		PaintDropLineDashBase(w);
+		r = GetRect();
+		length = (r.right-2-(r.bottom - r.top)) -(r.left+6);
+		segmentLength = 8;
+		segmentsCount = length/(segmentLength*2);
+		y = (r.top+r.bottom)/2;
+		currX = r.left+6;
+		for (c=0; c<segmentsCount; c++) {
+			w.DrawLine(currX, y, currX+segmentLength, y, 2, :Black);
+			currX += segmentLength+segmentLength;
+		}
+	}
+}
