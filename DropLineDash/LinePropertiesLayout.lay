@@ -1,0 +1,9 @@
+LAYOUT(LinePropertiesLayout, 132, 68)
+	ITEM(DropLineWidth, lineThickness, RightPosZ(0, 68).TopPosZ(24, 19))
+	ITEM(DropDashStyle, lineDash, RightPosZ(0, 68).TopPosZ(0, 19))
+	ITEM(ColorPusher, lineColor, RightPosZ(0, 68).TopPosZ(47, 19))
+	ITEM(Label, dv___3, SetLabel(t_("Dash:")).RightPosZ(68, 64).TopPosZ(0, 19))
+	ITEM(Label, dv___4, SetLabel(t_("Thickness:")).RightPosZ(68, 64).TopPosZ(24, 19))
+	ITEM(Label, dv___5, SetLabel(t_("Color:")).RightPosZ(68, 64).TopPosZ(47, 19))
+END_LAYOUT
+

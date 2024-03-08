@@ -1,4 +1,4 @@
-description "\377255,127,200";
+description "\377B255,127,200";
 
 uses
 	CtrlLib;
