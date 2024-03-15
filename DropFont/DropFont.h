@@ -3,54 +3,34 @@
 
 namespace Upp {
 
-struct DropFont_DisplayFont : public Display {
-	Color fontColor;
-	virtual void PaintBackground(Draw& w, const Rect& r, const Value& q, Color ink, Color paper, dword style) const;
-	virtual void Paint(Draw& w, const Rect& r, const Value& q, Color ink, Color paper, dword style) const;
-	virtual Size GetStdSize(const Value& q) const;
-	virtual Size RatioSize(const Value& q, int cx, int cy) const;
-	
-	DropFont_DisplayFont();
-	virtual	~DropFont_DisplayFont() {}
-
-	static DropFont_DisplayFont& GetDefaultDisplay();
-};
-
-
-struct DropFont_ValueDisplayFont : public Display {
-	Color fontColor;
-	virtual void PaintBackground(Draw& w, const Rect& r, const Value& q, Color ink, Color paper, dword style) const;
-	void Paint(Draw& w, const Rect& r, const Value& q, Color ink, Color paper, dword style) const;
-	virtual Size GetStdSize(const Value& q) const;
-	virtual Size RatioSize(const Value& q, int cx, int cy) const;
-
-	DropFont_ValueDisplayFont();
-	virtual	~DropFont_ValueDisplayFont() {}
-
-	static DropFont_ValueDisplayFont& GetDefaultDisplay();
-};
-
-
-
 class DropFont : public DropList
 {
 	private:
-	DropFont_DisplayFont display;
-	//DropFont_ValueDisplayFont display;
+	Font font;
 	
 	public:
 	DropFont();
 	virtual ~DropFont() {}
+
+	virtual void   SetData(const Value& data) {
+		font = ValueTo(data, StdFont().Height(30));
+		DropList::SetData(font.GetFace());
+	}
 	
-	void SetColor(Color c) { display.fontColor = c; }
+	virtual Value  GetData() const {
+		int faceNum = (int) DropList::GetData();
+		Font fout(faceNum, font.GetHeight() );
+		if (font.IsBold()) fout.Bold();
+		if (font.IsUnderline()) fout.Underline();
+		return Value(fout);
+	}
 	
 	template<class LIST>
 	void SetValues( LIST& v)
 	{
 		ClearList();
-		for (int c=0; c<v.GetCount(); ++c)
-		{
-			Add(v[c]);
+		for (int c=0; c<v.GetCount(); ++c) {
+			Add(v[c]); // v[c] must be int  (face)
 		}
 	}
 };

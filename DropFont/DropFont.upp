@@ -5,6 +5,7 @@ uses
 
 file
 	DropFont.usc,
+	DropFont.lay,
 	DropFont.cpp,
 	DropFont.h;
 
