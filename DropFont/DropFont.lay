@@ -1,0 +1,38 @@
+LAYOUT(FontEditLayout_line, 448, 48)
+	ITEM(Upp::StaticText, dv___0, SetText(t_("Face")).HSizePosZ(8, 272).TopPosZ(4, 19))
+	ITEM(Upp::StaticText, dv___1, SetText(t_("Height")).RightPosZ(188, 68).TopPosZ(4, 19))
+	ITEM(Upp::DropList, height, RightPosZ(188, 68).TopPosZ(20, 19))
+	ITEM(Upp::Option, bold, SetLabel(t_("Bold")).RightPosZ(96, 76).TopPosZ(4, 18))
+	ITEM(Upp::Option, italic, SetLabel(t_("Italic")).RightPosZ(96, 76).TopPosZ(24, 18))
+	ITEM(Upp::Option, underline, SetLabel(t_("Underline")).RightPosZ(8, 84).TopPosZ(4, 18))
+	ITEM(Upp::Option, strikeout, SetLabel(t_("Strikeout")).RightPosZ(8, 84).TopPosZ(22, 18))
+	ITEM(Upp::DropList, face, HSizePosZ(8, 272).TopPosZ(20, 19))
+END_LAYOUT
+
+LAYOUT(FontEditLayout_line_2, 440, 64)
+	ITEM(Upp::LabelBox, dv___0, SetLabel(t_("Face")).HSizePosZ(6, 268).TopPosZ(2, 58))
+	ITEM(Upp::StaticText, dv___1, SetText(t_("Face")).LeftPosZ(24, 80).TopPosZ(160, 19))
+	ITEM(Upp::LabelBox, dv___2, SetLabel(t_("Height")).RightPosZ(180, 80).TopPosZ(0, 60))
+	ITEM(Upp::WithDropChoice<Upp::EditIntSpin>, height, RightPosZ(188, 68).TopPosZ(24, 19))
+	ITEM(Upp::Option, bold, SetLabel(t_("Bold")).RightPosZ(96, 68).TopPosZ(16, 18))
+	ITEM(Upp::Option, italic, SetLabel(t_("Italic")).RightPosZ(96, 68).TopPosZ(36, 18))
+	ITEM(Upp::Option, underline, SetLabel(t_("Underline")).RightPosZ(24, 68).TopPosZ(16, 18))
+	ITEM(Upp::Option, strikeout, SetLabel(t_("Strikeout")).RightPosZ(24, 68).TopPosZ(34, 18))
+	ITEM(Upp::LabelBox, dv___8, SetLabel(t_("Options")).RightPosZ(12, 160).TopPosZ(0, 60))
+	ITEM(Upp::DropList, face, HSizePosZ(12, 272).TopPosZ(24, 19))
+END_LAYOUT
+
+LAYOUT(FontLayout_block1, 456, 84)
+	ITEM(Upp::LabelBox, dv___0, SetLabel(t_("Face")).HSizePosZ(6, 268).TopPosZ(2, 42))
+	ITEM(Upp::LabelBox, dv___1, SetLabel(t_("Height")).RightPosZ(180, 80).TopPosZ(0, 44))
+	ITEM(Upp::WithDropChoice<Upp::EditIntSpin>, height, RightPosZ(188, 68).TopPosZ(16, 19))
+	ITEM(Upp::Button, ok, SetLabel(t_("OK")).LeftPosZ(84, 64).TopPosZ(52, 24))
+	ITEM(Upp::Button, cancel, SetLabel(t_("Cancel")).LeftPosZ(152, 64).TopPosZ(52, 24))
+	ITEM(Upp::Option, bold, SetLabel(t_("Bold")).RightPosZ(92, 68).TopPosZ(16, 18))
+	ITEM(Upp::Option, italic, SetLabel(t_("Italic")).RightPosZ(92, 68).TopPosZ(36, 18))
+	ITEM(Upp::Option, underline, SetLabel(t_("Underline")).RightPosZ(20, 68).TopPosZ(16, 18))
+	ITEM(Upp::Option, strikeout, SetLabel(t_("Strikeout")).RightPosZ(20, 68).TopPosZ(34, 18))
+	ITEM(Upp::LabelBox, dv___9, SetLabel(t_("Options")).RightPosZ(8, 160).TopPosZ(0, 60))
+	ITEM(Upp::DropList, face, HSizePosZ(12, 272).TopPosZ(16, 19))
+END_LAYOUT
+
